@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 423 96" role="img" aria-label="Чашка чая">
+  <g fill="none" stroke="#111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M112 59h164c-4 22-28 33-82 33-52 0-76-11-82-33Z"/>
+    <path d="M276 61c36-4 50 5 45 19-5 16-28 17-50 8"/>
+    <path d="M75 90h244"/>
+    <path d="M160 49c-17-11 18-17 0-30-12-9-3-14 9-18"/>
+    <path d="M204 49c22-14-22-23 3-39"/>
+    <path d="M242 49c-13-9 14-16 5-28"/>
+  </g>
+</svg>

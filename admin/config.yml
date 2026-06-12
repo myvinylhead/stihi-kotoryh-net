@@ -1,0 +1,71 @@
+local_backend: true
+
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "poems"
+    label: "Стихи"
+    label_singular: "Стихотворение"
+    folder: "content/poems"
+    path: "{{slug}}/index"
+    create: true
+    slug: "{{fields.slug}}"
+    format: "frontmatter"
+    editor:
+      preview: false
+    fields:
+      - { label: "Название", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string", hint: "Латиницей, например nasha-zhizn" }
+      - { label: "Раздел", name: "section", widget: "string" }
+      - { label: "Порядок", name: "order", widget: "number", value_type: "int", default: 100 }
+      - { label: "Дата", name: "date", widget: "datetime", required: false }
+      - { label: "Опубликовано", name: "isPublished", widget: "boolean", default: true }
+      - label: "Значки"
+        name: "badges"
+        widget: "object"
+        fields:
+          - { label: "Музыка", name: "music", widget: "boolean", default: false }
+          - { label: "Озвучка", name: "reading", widget: "boolean", default: false }
+          - { label: "Интерактив", name: "interactive", widget: "boolean", default: false }
+      - label: "Иллюстрация"
+        name: "illustration"
+        widget: "object"
+        required: false
+        fields:
+          - label: "Тип"
+            name: "type"
+            widget: "select"
+            options: ["image", "hover-video", "tap-video"]
+            default: "image"
+          - { label: "Файл", name: "src", widget: "file", required: false }
+          - { label: "Постер для видео", name: "poster", widget: "image", required: false }
+          - { label: "Alt-текст", name: "alt", widget: "string", required: false }
+      - label: "Песня"
+        name: "song"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Аудио", name: "audioSrc", widget: "file", required: false }
+          - { label: "Название", name: "title", widget: "string", required: false }
+          - { label: "Текст песни", name: "lyrics", widget: "text", required: false }
+      - label: "Озвучка"
+        name: "reading"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Аудио", name: "audioSrc", widget: "file", required: false }
+          - { label: "Чтец / подпись", name: "reader", widget: "string", required: false }
+      - label: "Клип"
+        name: "clip"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Видео", name: "videoSrc", widget: "file", required: false, hint: "Лучше MP4: H.264 + AAC. Например /uploads/poems/nasha-zhizn/clip.mp4" }
+          - { label: "Название", name: "title", widget: "string", required: false }
+          - { label: "Постер", name: "poster", widget: "image", required: false }
+      - { label: "Текст стихотворения", name: "body", widget: "markdown" }
